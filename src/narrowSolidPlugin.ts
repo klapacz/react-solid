@@ -6,7 +6,7 @@ export interface NarrowSolidPluginOptions extends Partial<Options> {
   exclude?: string | RegExp | Array<string> | Array<RegExp>
 }
 
-export function narrowSolidPlugin({ include, exclude, ...rest }: NarrowSolidPluginOptions = {}) {
+const narrowSolidPlugin = ({ include, exclude, ...rest }: NarrowSolidPluginOptions = {}) => {
   const plugin = solidPlugin(rest)
   const originalConfig = plugin.config!.bind(plugin)
   const filter = createFilter(include, exclude)
@@ -32,3 +32,5 @@ export function narrowSolidPlugin({ include, exclude, ...rest }: NarrowSolidPlug
 
   return plugin
 }
+
+export default narrowSolidPlugin
